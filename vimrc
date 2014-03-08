@@ -1,8 +1,10 @@
 "For pathogen
 execute pathogen#infect()
 
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags() " generate helptags for everything in 'runtimepath'
+"call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags() " generate helptags for everything in 'runtimepath'
+"
+Helptags
 
 syntax on
 filetype plugin indent on
@@ -29,4 +31,9 @@ map <C-n> :NERDTreeToggle<CR>
 
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+nmap <leader>d :NERDTreeToggle<CR>
 
+nmap <C-f> :FufFile<CR>
+
+
+nmap <C-a> :FufDir<CR>
