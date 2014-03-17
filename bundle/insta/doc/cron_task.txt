@@ -1,0 +1,21 @@
+*cron* *crontask* *instacron*   Quartz cron task
+
+===============================================================================
+CONTENTS
+
+    1. Intro........................................|QuartzCrown|
+    2.TaskCompleted.................................|FileUpdated|
+    
+    
+    
+    
+1.Intro:
+    Modify all the update sql in Quartz cron job.
+
+2. File Modify:
+   Added : CronJobSchedular.java : This is main class for scheduling a job, calling from AppInit and this class reading time from file.
+	Cron pattern for timing 
+	#0/30 * * * *
+	Meaning of the crin pattern:
+	sec,min,hr,week of the day,day of the menth,year
+   Added :   	
