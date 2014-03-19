@@ -13,9 +13,46 @@ CONTENTS
     Modify all the update sql in Quartz cron job.
 
 2. File Modify:
-   Added : CronJobSchedular.java : This is main class for scheduling a job, calling from AppInit and this class reading time from file.
+   Added : 
+   	*CronJobSchedular.java : 
+     		This is main class for scheduling a job, calling from AppInit and this class reading time and cron name from file.
+
 	Cron pattern for timing 
-	#0/30 * * * *
+		#0/30 * * * *
+		
 	Meaning of the crin pattern:
-	sec,min,hr,week of the day,day of the menth,year
-   Added :   	
+		sec,min,hr,week of the day,day of the menth,year
+	Changed Linux cron to Java Quartz schedular:
+
+	*SQLUpdateJob.java : is used for updating sql from every cron job class
+
+	---JavaClass--          	---- cron file -----
+
+	*CasefileAutoCloseJob  	:  case_file_auto_close.sh
+
+	*CloseNoChargeBillsJob   :  close_no_charge_bills.sh
+
+	*DailyCheckpointJob      :  daily_checkpoint.sh
+
+	*OpDeactivateJob         : op_deactivate.sh
+
+	*PackageJob          	:  activate_inactivate_packages.sh
+
+	*RateMasterJob     	:  rate_master_fix.sh
+
+	*ResetDeptTokensJob    	:  reset_dept_tokens.sh
+
+	*ResetSequenceJob    	:  reset_sequences.sh
+
+	*SetAppoitmentJob.java 	:  set_appt_noshow.sh
+
+	*UpdateStatsMessageJob 	:  update_stats_messages.sh 
+
+
+3. Not Completed
+
+    email_reports.sh 	
+
+SQLError :  
+   mrp doesn't exist
+    StoreCheckPointJob          :  store_checkpoint.sh

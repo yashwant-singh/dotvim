@@ -84,6 +84,8 @@ set hlsearch
 
 set incsearch
 
+set noswapfile
+
 "highlight the screen column of the cursor (local to window)
 "" set cuc " nosuc cuc
 
