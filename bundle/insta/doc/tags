@@ -1,6 +1,0 @@
-cron	cron_task.txt	/*cron*
-crontask	cron_task.txt	/*crontask*
-instacron	cron_task.txt	/*instacron*
-pgadmin	postgres.txt	/*pgadmin*
-postgres	postgres.txt	/*postgres*
-postgresql	postgres.txt	/*postgresql*
