@@ -1,0 +1,114 @@
+*hms* *instahms*  hms explores the details of menu and submenu works.
+   
+    
+  ==================================================================================================
+
+  CONTENTS									**hms contents**
+
+-----------------------------------------------------------------------------------------------------
+	Name						id				Modules
+-----------------------------------------------------------------------------------------------------
+  	1. Patient Search...............................grep_patient_search...............mode_basic
+		
+		1.1. Patient Search.....................patient_details_search
+		1.2. Visit Search.......................visit_details_search
+		
+	2. Registration.................................grep_registration..................mod_registration
+	
+		2.1. OP Registration....................reg_registration
+		2.2. IP Registration....................ip_registration
+		2.3. OutSide Patient Registration.......out_pat_reg
+		2.4. Pre-Registration...................reg_general
+		2.5. Bulk Registration..................reg_upload...........................mod_bulk_upload
+		2.6. Re-admit...........................reg_re_admit
+		2.7. ADT................................adt..................................mod_adt
+		2.8. Discharge..........................pat_discharge........................mod_registration
+		2.9. Follow Up Details..................followup_details
+		2.10. Quick Estimate.....................reg_quick_estimate
+		2.11. Patient category Change............patient_category_change
+		2.12. OP IP Conversion...................op_ip_conversion
+		2.13. Edit Visit Details.................edit_visit_details
+		2.14. Registration Audit Log.............registration_audit_log
+		2.15. Finger Print Enrollment............fp_service_enroll.....................mod_fpservice 		
+		2.16. Finger Print Verification..........fp_service_verification...............mod_fpservice
+		2.17. Export Encounter Details...........reg_export_date
+		
+
+	3. Billing.......................................grep_billing..........................mod_bulling
+
+		3.1. Search Bills........................search_bills
+		3.2. View/Edit Bill......................credit_bill_collection
+		3.3. Edit Bill Remittance................bill_remittance.......................mod_adv_ins
+		3.4. Edit Pharmacy Item Amount...........edit_pharmacy_item_amount
+		3.5. Change Bill Insurance...............connect_disconnect_tpa
+		3.6. Add/Edit Insurance..................change_visit_tpa
+		3.7. Change Rate Plan/Bed Type...........change_visit_org
+		3.8. Edit Member Id......................edit_member_id
+		3.9. Order...............................order
+		3.10. New Bill...........................new_prepaid_bills
+		3.11. Receipts List......................receipts
+		3.12. Deposit Receipts...................deposit_receipts.........................mod_billing_ext
+		3.13. Edit Receipt.......................edit_receipt
+		3.12. Pharmacy Receipts List.............ph_receipts
+		3.13. Deposits...........................patient_deposits.........................mod_billing_ext
+		3.14. Deposits Collection................patient_deposits_collection..............mod_billing_ext
+		3.15. Patient Statement..................patient_expensive_statement..............mod_billing_ext
+		3.16. Deposits Realization...............deposits_realization.....................mod_billing_ext
+		3.17. Consolidated Sponsor Bills.........bill_sponsor.............................mod_billing_ext
+		3.18. New Cons. Sponsor Bill.............raise_sponsor_bill.......................mod_billing_ext
+		3.9.  View/Edit Cons. Sponsor Bill........edit_sponsor_bill.......................mod_billing_ext
+		3.10. Receive/Allocate Cons. Sponsor Bill..allocate_sponsor_bill
+		3.11. Cons. Sponsor Receipts.............sponsor_receipts.........................mod_billing_ext
+		3.12. Transaction Approval...............transaction_approval.....................mod_transactions
+		3.13. Export Data for Accounting.........billing_tally_export.....................mod_tally
+		3.33. Scheduled Export Log...............account_xml_import_export_log............mod_tally
+		3.14. Change Bill Type ..................change_billtype
+		3.15. Change Bill Primary Status........ change_billprimary
+		3.16. Audit Log..........................bill_audit_log
+		3.17. All Receipts Audit Log.............all_receipts_audit_log
+		3.18. Bills Backup ......................bills_backup
+		3.19. Bill Print.........................bill_print
+		3.20. Receipt Print......................receipt_print
+		3.21. Reward Points......................reward_points.............................mod_reward_points
+
+	4. Discharge Summary.............................grp_discharge_summary.....................mod_basic
+
+		4.1. Discharge Summary...................discharge_summary
+
+	5. Payments......................................grp_payments...............................mod_payments
+		
+		5.1. Payments Due........................pay_dashboard
+		5.2. Paid Payments.......................pay_paymentscreen
+		5.3. Conducting Doctor Payments..........pay_doctor
+		5.4. Prescribing Doctor Payments.........pay_prescribe_doctor
+		5.5. Referral Doctor Payments............pay_ref_doctor
+		5.6. OutHouse Payments...................outhouse_payment
+		5.7. Miscellaneous Payments..............pay_miscellaneous
+		5.8. Payment Reversal....................pay_reversal
+		5.9. Supplier Payments...................pay_supplier
+		5.10. Auto Post Payments.................autopost_payments
+		5.11. View Payments Audit Log............payment_audit_log
+		5.12. Payment Voucher (Combined).........pay_paymentscreen_combined
+		5.13. Payment Voucher (IP only)..........pay_paymentscreen_ip
+		5.14. Payment Voucher (OP only)..........pay_paymentscreen_op
+		5.15. Payment Voucher....................pay_paymentscreen_others
+
+	6. Services......................................grp_services...............................mod_services
+
+		6.1. Services List......................pending_services
+		6.2. Order Services.....................service_order
+		6.3. Conducted Services List............conducted_services
+
+	7. OT Service...................................grp_ot_services.............................mod_ipservices
+		
+		7.1. Pending Operations................operations_pending_list......................mod_basic_ot
+		7.2. Conduct Operations................conduct_operation............................mod_basic_ot
+		7.3. Conduct and/or Add Document.......conduct_or_add_operation_doc
+		7.4. OT Record.........................ot_record
+		7.5. Conducted Operations..............operations_conducted_list....................mod_basic_ot
+		7.6. Duplicate OT Service Report.......ot_service_report
+
+	8. OT Management...............................grp_adv_ot_services..........................mod_advanced_ot
+
+		8.1. OT Bookings.......................ot_bookings
+		8.2. 

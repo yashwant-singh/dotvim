@@ -1,0 +1,36 @@
+set wrap off
+
+SET SERVEROUTPUT ON SIZE 1000;
+
+
+
+SET MARKUP HTML ON ENTMAP ON SPOOL ON PREFORMAT OFF ;
+SPOOL /oracle/test.xls;
+SELECT * FROM dba_users;
+SPOOL OFF;
+
+
+exp xxnmc_his/xxnmc_his@10.8.81.11:1541/TEST -file nmc_out
+
+
+**sqlplus_vout**
+
+---------------------------------------------------------Vertical Output------------------------------
+
+
+create or replace procedure print_vertical (sel varchar2, cur   in out sys_refcursor)
+as
+begin
+   open cur for 
+         select   * from   xmltable ('//ROW/*' passing dbms_xmlgen.getxmltype (sel)
+	                          columns name varchar2 (30) path 'node-name(.)',
+				                           value varchar2 (30) path '.');
+end print_vertical;
+
+
+
+/
+
+SQL > var cur refcursor
+
+SQL> exec print_vertical('select * from user_tables',:cur);

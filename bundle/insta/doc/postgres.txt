@@ -1,0 +1,38 @@
+*postgres* *postgresql* *pgadmin*     Postgresql available in this document
+
+
+
+
+=============================================================================
+CONTENT
+
+    1.DataBase Dump...........................................|*pg_dump*|
+
+
+1. DataBase Dump :
+	Take a dump:
+	  
+	    $pg_dump database_name -n schema_name -f file_to_be_save -U postgres
+	 Restore dump:
+	     
+	     $\i filename
+	
+		OR
+	Take a dump:
+	    $pg_dump hms -Fc -U postgres -f filename
+
+	    $pg_dump -Fc mydb > db.dump
+
+
+
+	Restore a dump:
+		
+	   $pg_restore
+
+	   $pg_restore -C -d postgres db.dump
+
+	Take specific table dump :
+
+		$pg_dump database_name -t schema_name.table_name -f file_name -U database-username
+
+
