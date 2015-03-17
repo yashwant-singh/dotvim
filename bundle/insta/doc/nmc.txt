@@ -1,6 +1,6 @@
-**nmc**
+*nmc*
 
-**software**
+*software*
 
 1. Installed Oracle-10g
 

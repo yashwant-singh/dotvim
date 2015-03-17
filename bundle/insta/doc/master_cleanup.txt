@@ -1,0 +1,70 @@
+*master_cleanup*
+*cleanup*
+
+
+
+--set search_path to nmc_uat;
+
+delete from store_stock_details;
+delete from store_adj_details;
+delete from store_grn_details;
+delete from store_transfer_details;
+delete from store_supplier_returns;
+delete from store_po;
+delete from store_po_main;
+delete from store_issue_returns_details;
+delete from stock_issue_details;
+delete from bed_linen_current_list;
+delete from linen_usage_details;
+delete from diagnostics_reagents;
+delete from store_consignment_invoice;
+delete from store_item_details;
+delete from store_grn_main;
+delete from store_invoice;
+delete from store_supplier_returns_main;
+delete from supplier_master;
+delete from manf_master;
+delete from category_bed_markups;
+delete from store_category_master;
+delete from store_transfer_main;
+delete from store_adj_main;
+delete from store_issue_returns_main;
+delete from stock_issue_main;
+delete from generic_name;
+delete from medicine_route;
+delete from package_issue_uom;
+delete from store_item_issue_rates;
+delete from store_item_controltype;
+delete from doctor_medicine_favourites;
+delete from item_form_master;
+delete from strength_units;
+delete from item_insurance_categories where insurance_category_id > 400;
+delete from supplier_category_master;
+--delete from stores;
+
+
+ALTER SEQUENCE manufacturer_id_seq RESTART 1;
+ALTER SEQUENCE item_id_seq RESTART 1;
+ALTER SEQUENCE store_category_master_seq RESTART 2;
+--ALTER SEQUENCE stores_seq RESTART 2;
+ALTER SEQUENCE generic_sequence RESTART 1;
+ALTER SEQUENCE medicine_route_seq RESTART 1;
+ALTER SEQUENCE store_item_controltype_seq RESTART 3;
+ALTER SEQUENCE supplier_category_master_seq RESTART 1;
+ALTER SEQUENCE item_form_master_seq RESTART 1;
+ALTER SEQUENCE strength_units_seq RESTART 1;
+
+
+--insert into stores(dept_name,counter_id,status,pharmacy_tin_no,pharmacy_drug_license_no,template_name,account_group,dept_id,auto_fill_prescriptions,purchases_store_vat_account_prefix,purchases_store_cst_account_prefix,sales_store_vat_account_prefix,store_type_id,is_super_store) values('CENTRAL STORE','CNT0002','A','','','BUILTIN_HTML',1,0,'t','','','',1,'Y');
+--insert into stores(dept_name,counter_id,status,pharmacy_tin_no,pharmacy_drug_license_no,template_name,account_group,dept_id,auto_fill_prescriptions,purchases_store_vat_account_prefix,purchases_store_cst_account_prefix,sales_store_vat_account_prefix,store_type_id,is_super_store) values('Diag Store','','A','','','',1,-1,'f','','','',3,'Y');
+--insert into stores(dept_name,counter_id,status,pharmacy_tin_no,pharmacy_drug_license_no,template_name,account_group,dept_id,auto_fill_prescriptions,purchases_store_vat_account_prefix,purchases_store_cst_account_prefix,sales_store_vat_account_prefix,store_type_id,is_super_store) values('Service Store','','A','','','',1,-2,'f','','','',3,'Y');
+--insert into stores(dept_name,counter_id,status,pharmacy_tin_no,pharmacy_drug_license_no,template_name,account_group,dept_id,auto_fill_prescriptions,purchases_store_vat_account_prefix,purchases_store_cst_account_prefix,sales_store_vat_account_prefix,store_type_id,is_super_store) values('OT CONSUMABLE STORE','','A','','','',1,-3,'f','','','',3,'Y');
+--insert into stores(dept_name,counter_id,status,pharmacy_tin_no,pharmacy_drug_license_no,template_name,account_group,dept_id,auto_fill_prescriptions,purchases_store_vat_account_prefix,purchases_store_cst_account_prefix,sales_store_vat_account_prefix,store_type_id,is_super_store) values('INVENTORY CENTRAL STORE','','A','','','',1,1,'f','','','',2,'Y');
+
+--insert into store_category_master(category_id,category,identification,issue_type,billable,status,claimable,expiry_date_val,retailable,discount,purchases_cat_vat_account_prefix,purchases_cat_cst_account_prefix,sales_cat_vat_account_prefix,asset_tracking) values(1,'general','B','R','t','A','t','t','t',0,'Purchase Account','Purchase Account','Pharmacy Credit Sales','N');
+
+--insert into store_item_controltype(control_type_id, control_type_name) values(1,'Normal');
+--insert into store_item_controltype(control_type_id, control_type_name) values(2,'ScheduleH');
+--insert into store_item_controltype(control_type_id, control_type_name) values(3,'ScheduleX');
+
+--insert into supplier_category_master(supp_category_id, supp_category_name) values(0,'general');

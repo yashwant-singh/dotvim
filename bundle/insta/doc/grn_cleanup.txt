@@ -1,0 +1,13 @@
+*grn_cleanup*
+*cleanup*
+
+delete from store_item_batch_details;
+delete from store_item_lot_details;
+delete from store_stock_details;
+delete from store_grn_details;
+delete from store_grn_main;
+delete from store_invoice;
+ALTER SEQUENCE store_item_batch_details_seq RESTART 1;
+ALTER SEQUENCE store_item_lot_details_seq RESTART 1;
+
+

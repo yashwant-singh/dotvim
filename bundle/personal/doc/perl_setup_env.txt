@@ -1,0 +1,56 @@
+*perl_setup_env*
+
+Ques> How to install all dependent package?
+
+perl -MCPAN -e "install Email::Send"
+
+Ques> Check environment variable path?
+
+$ env -i perl -V
+
+Ques> How to set up environment variable?
+
+1. Default @INC
+
+	To change the default path when configuring Perl binary compilation, set the configuration option
+
+	Configure -Dotherlibdirs=/usr/lib/perl5/site_perl/5.16.3
+
+2. Environmental variable PERL5LIB (or PERLLIB)
+
+  using variable PERL5LIB
+  using variable PERLLIB
+
+  Example :
+  
+     PERL5LIB="/home/myuser/test"
+
+3. -I command-line option
+
+	Perl pre-pends @INC with a list of directories (colon-separated) passed as value of the -I command-line option. This can be done in three ways, as usual with Perl options:
+
+	->Pass it on command line:
+
+		perl -I /my/moduledir your_script.pl
+
+	-> Pass it via the first line (shebang) of your Perl script:
+
+		#!/usr/local/bin/perl -w -I /my/moduledir
+
+4. Pass it via the lib pragma
+
+	In a program:
+
+		use lib ("/dir1", "/dir2");
+
+	On the command line:
+
+		perl -Mlib=/dir1,/dir2
+
+
+
+
+
+
+
+

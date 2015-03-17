@@ -9,7 +9,6 @@ Helptags
 
 
 set nocompatible
-syntax on
 filetype plugin indent on
 
 
@@ -30,6 +29,25 @@ autocmd vimenter * if !argc() | NERDTree | endif
 "
 
 map <C-n> :NERDTreeToggle<CR>
+
+"=================================================================
+"Colour Configuration
+"=================================================================
+
+
+set t_Co=256
+"colorscheme wombat256mod
+
+syntax on
+
+set colorcolumn=80
+"set relativenumber
+set autoindent
+set ruler
+set cmdheight=2
+set pastetoggle=<F11>
+
+"set mouse=a
 
 "Open a file in new tab by default in NERDTree?
 
@@ -53,20 +71,6 @@ nmap <C-f> :FufFile<CR>
 
 nmap <C-a> :FufDirWithFullCwd<CR>
 
-" This is for Ident highlight
-" vertical line indentation
-"
-"":set list lcs=tab:\|\
-let g:indentLine_color_term = 239
-let g:indentLine_color_gui = '#09AA08'
-
-"let g:indentLine_char = 'c'  " c can be pipe | 
-"
-
-
-"This is for Delimitmate plugins
-let delimitMate_expand_cr = 1
-
 "Own Ultisnips configuration
 
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
@@ -79,6 +83,7 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
 "set  nu " nonu nu
 "
 ""highlight all matches for the last used search pattern
+
 set hls " nohls hls
 set hlsearch
 

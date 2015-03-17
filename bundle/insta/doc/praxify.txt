@@ -1,0 +1,89 @@
+*praxify*
+
+-------------
+praxify URL :
+-------------
+
+https://54.179.172.56/instahms
+
+---------------
+praxify views :
+---------------
+
+select * from praxify_codes_master_template;
+select * from praxify_doctor_appointment_details_view;
+select * from praxify_drug_master_template;
+select * from praxify_patient_visit_vitals_view;
+select * from praxify_todays_doctor_appointment_details_view;
+select * from praxify_lab_test_results_view;
+select * from praxify_radiology_templates_view;
+select * from praxify_todays_lab_test_results_view;
+select * from praxify_master_sync_table;
+select * from praxify_result_status;
+select * from praxify_todays_radiology_templates_view;
+
+---------
+Folders :
+---------
+
+1. admission :
+
+2. adt :
+
+3. adt_t :
+
+4. orders :
+
+5. orders_t :
+
+6. prescription :
+
+7. registration :
+
+8. results :
+
+9. results_t :
+
+
+
+
+-----------
+ADT   : Admission Discharge and Transfer
+----------
+
+ADT-A01 : It is an event which fires at the time of allocating a bed of IP an patient.
+
+	  This event is firing at the time of inserting rows into ip_bed_details table and 
+
+          it is inserting one new rows into hl7_export_items with export_status = 'N' and item_type is 'ADMISSION'
+
+ADT-A02 : It is an event which fires while transferring an patient from one ward/bed to another ward/bed,
+
+	  This event will fire while updating an ip_bed_details table and one new rows insert into hl7_export_items
+        
+          with export_status = 'N' and item_type is 'TRANSFER'
+
+ADT-A03 :  It is an event which fires while descharging a patient from the hospital.
+
+           This event will execute on update of patient_registration and discharge_flag = 'D'.
+
+	   After executing an event it will insert one new rows into ip_bed_details table with item_type = 'DISCHARGE' 
+  
+           and export_status = 'N'
+
+
+Note : Once the message file will be generated successfully then export_status will be modified by 'S'
+
+       If export will failed then it will be modified by 'F'
+         
+
+       
+        
+
+	  
+
+
+
+
+
+

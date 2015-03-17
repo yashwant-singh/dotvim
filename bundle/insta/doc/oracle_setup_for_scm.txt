@@ -1,0 +1,260 @@
+*oracle_setup_for_scm*
+
+--------------------------------------------------------------------------------------------------------------------------
+ SCM Data Sync from Oracle To Postgres using perl script.
+--------------------------------------------------------------------------------------------------------------------------
+
+
+1 ) Following software is required :
+
+		Oracle Clinet :
+			a) oracle-instantclient11.2-devel_11.2.0.4.0-2_amd64.deb
+			b) oracle-instantclient11.2-sqlplus_11.2.0.4.0-2_amd64.deb
+			c) oracle-instantclient11.2-basic_11.2.0.4.0-2_amd64.deb
+		DBI :
+		     DBI-1.631
+
+		DBD-Oracle :
+			DBD-Oracle-1.74.tar.gz
+
+		DBD-Pg :
+			DBD-Pg-3.1.1
+
+		Try-Catch :	
+			Try-0.03
+
+		Following Initial Setup is required :
+
+
+	Install following Package in Linux.
+		
+		a) For installing Oracle install one extra liberary : libaio1 (>= 0.3.93)
+			
+		b) root@auhhisapp01:/tmp/oracle-client/deb# dkpg -i libaio1
+
+			ii  libaio1                          0.3.109-2ubuntu1                  Linux kernel AIO access library - shared library
+		
+		c)
+		root@auhhisapp01:/tmp/oracle-client/deb# dpkg -i oracle-instantclient11.2-basic_11.2.0.4.0-2_amd64.deb 
+				(Reading database ... 58782 files and directories currently installed.)
+				Preparing to replace oracle-instantclient11.2-basic 11.2.0.4.0-2 (using oracle-instantclient11.2-basic_11.2.0.4.0-2_amd64.deb) ...
+				Unpacking replacement oracle-instantclient11.2-basic ...
+				Setting up oracle-instantclient11.2-basic (11.2.0.4.0-2) ...
+				Processing triggers for libc-bin ...
+				ldconfig deferred processing now taking place
+
+
+		root@auhhisapp01:/tmp/oracle-client/deb# dpkg -i oracle-instantclient11.2-devel_11.2.0.4.0-2_amd64.deb 
+				Selecting previously unselected package oracle-instantclient11.2-devel.
+				(Reading database ... 58782 files and directories currently installed.)
+				Unpacking oracle-instantclient11.2-devel (from oracle-instantclient11.2-devel_11.2.0.4.0-2_amd64.deb) ...
+				Setting up oracle-instantclient11.2-devel (11.2.0.4.0-2) ...
+
+		root@auhhisapp01:/tmp/oracle-client/deb# dpkg -i oracle-instantclient11.2-sqlplus_11.2.0.4.0-2_amd64.deb 
+				Selecting previously unselected package oracle-instantclient11.2-sqlplus.
+				(Reading database ... 58831 files and directories currently installed.)
+				Unpacking oracle-instantclient11.2-sqlplus (from oracle-instantclient11.2-sqlplus_11.2.0.4.0-2_amd64.deb) ...
+				Setting up oracle-instantclient11.2-sqlplus (11.2.0.4.0-2) ...
+
+		d)dpkg -l | grep oracle
+		
+			ii  oracle-instantclient11.2-basic   11.2.0.4.0-2                      Instant Client for Oracle Database 11g
+			ii  oracle-instantclient11.2-devel   11.2.0.4.0-2                      Development headers for Instant Client.
+			ii  oracle-instantclient11.2-sqlplus 11.2.0.4.0-2                      SQL*Plus for Instant Client.
+		
+
+2 ) Setup the Oracle Hoeme Path :
+
+	export ORACLE_HOME="/usr/lib/oracle/11.2/client64"
+	export PATH="$ORACLE_HOME/bin:$PATH"
+	export LD_LIBRARY_PATH="$ORACLE_HOME/lib:$LD_LIBRARY_PATH"      (Optional)
+	export TNS_ADMIN="/usr/lib/oracle/11.2/client64/network/admin"  (Optional)
+
+3 )Copy tnsnames.ora from any of the runnig server or type the following character :
+
+    TEST =
+	  (DESCRIPTION =
+	    (ADDRESS = (PROTOCOL = TCP)(HOST = 10.8.81.11)(PORT = 1541))
+	    (CONNECT_DATA =
+	      (SERVER = DEDICATED)
+	      (SERVICE_NAME = TEST)
+	      (INSTANCE_NAME = TEST1)
+	    )
+	  )
+
+	EXTPROC_CONNECTION_DATA =
+	  (DESCRIPTION =
+	    (ADDRESS_LIST =
+	      (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC_FOR_XE))
+	    )
+	    (CONNECT_DATA =
+	      (SID = PLSExtProc)
+	      (PRESENTATION = RO)
+	    )
+	  )
+
+
+
+4 ) Install Oracle DBI :
+
+  4.1 ) Download :
+		Perl DBI,Oracle DBI,Pg DBI. 
+	
+	Two way we can download the DBI.
+
+	I. Either directly from http://www.cpan.org/
+		or
+	II. Use the perl command.
+           perl -MCPAN -e shell
+
+            cpan> install DBI
+            cpan> install Pg
+            cpan> install Oracle
+
+	Note : Check if all package is installed then no need to follow second step.
+        How to check :
+         perl -e 'use DBI';
+         perl -e 'use Pg'
+	
+   4.2 ) Installation :
+
+	4.2.1 ) Install perl DBI, if not installed in step 2.1->II options.
+
+		Test : perl -e 'use DB'";  # It will not give any error
+
+	4.2.2 ) Install DBD-Oracle-1.74
+
+		Test : perl -e ''
+	  
+	Step : Go inside DBD folder.
+		a. perl Makefile.PL
+         	b. make
+	 	c. make test    //optional
+	 	d. make install
+
+          Note : In 64 bit linux Oracle.pm is not finding from environment veriable, so use following opetions.
+
+          $find / -name "Oracle.pm"
+          /usr/local/lib/perl/5.14.2/DBD/Oracle.pm
+
+          Copy this location in perl script to use this Oracle.pm.
+
+	Test :
+		perl -e 'use DBI; use Oracle';  # will not give any error
+                perl -e 'use DBI; use lib "/usr/local/lib/perl/5.14.2/DBD/";use Oracle; my $dbh = DBI->connect("DBI:Oracle:ERPPROD","xxnmc_his","xxnmc8030"); print $dbh';
+           
+              o/p :  DBI::db=HASH(0x15d3f88)
+	
+        4.2.3 ) Install DBD-Pg-3.1.1
+
+          Step : Go inside DBD folder
+	  	a. perl Makefile.PL
+          	b. make
+	  	c. make test    //optional
+	  	d. make install
+
+	Test :
+             
+        4.2.4 ) Install Try or copy Try from any of the system 
+              
+             Using CPAN: 
+             $perl -MCPAN -e shell
+             cpan>install Try
+             If it install ten ok else,
+             Find the downloaded Try package in .cpan repository
+     
+            $HOME/cpan/build/Try-Tiny-0.22-TDdtsQ
+	Now Install the Try using following commands :
+
+	Step:
+           a. perl Makefile.pl
+           b. make
+           c. make install
+
+
+	Check either perl is install or not by using following commands:
+
+	Test :
+		$perl -e 'use Try';
+	        $perl -e 'Try::Tiny'
+
+ 
+5 ) For setting any extra liberary path use following enverionment veriable :
+
+ export PERL5LIB=/some/other/perl/lib/path:$PERL5LIB
+
+      
+6 ) Test the complete system :
+
+
+
+
+#!/usr/bin/perl
+use DBI;
+use File::Basename;
+use Try::Tiny;
+
+
+#use lib "/root/perl5/lib/perl5/x86_64-linux-gnu-thread-multi/";
+use lib "/usr/local/lib/perl/5.14.2/DBD/";
+use Oracle;
+use Pg;
+
+#Oracle Path env Programatically
+
+$ENV{'ORACLE_HOME'} = '/usr/lib/oracle/11.2/client64';
+$ENV{'PATH'} = '$ORACLE_HOME/bin:$PATH';
+#$ENV{'LD_LIBRARY_PATH'} = '$ORACLE_HOME/lib:$LD_LIBRARY_PATH';
+#$ENV{'TNS_ADMIN'} = '/usr/lib/oracle/11.2/client64/network/admin';  # If it is required
+#$ENV{'ORACLE_SID'} = 'FIRE';
+
+
+
+
+my $o_driver = "Oracle";
+my $o_host = "10.8.81.11";
+my $o_database = "TEST";
+my $o_port = "1541";
+my $o_dsn = "DBI:$o_driver:host=$o_host;sid=$o_database;port=$o_port";
+my $o_userid = "xxnmc_his";
+my $o_password = "xxnmc_his";
+
+
+#my $o_dbh = DBI->connect( 'DBI:Oracle:TEST','xxnmc_his','xxnmc_his') || die "Database connection fail : $DBI::errstr";
+
+
+#PostgreSql Driver
+
+my $p_driver = "Pg";
+my $p_database = "hmstest";
+my $p_host = "127.0.0.1";
+my $p_port = "5432";
+my $p_dsn = "DBI:$p_driver:dbname=$p_database;host=$p_host;port=$p_port";
+my $p_userid = "postgres";
+my $p_password = "";
+
+=comment
+
+
+=comment
+
+my $p_dbh = DBI->connect($p_dsn,$p_userid,$p_password,
+                                                        {
+
+                                                                PrintError => 0,
+                                                                PrintWarn => 1,
+                                                                RaiseError => 1,
+                                                                AutoCommit => 0,
+                                                                ShowErrorStatement => 1,
+                                                        });
+=cut
+
+
+
+print "Testing Done\n";
+                          
+	
+
+
+
+~
