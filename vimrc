@@ -7,6 +7,8 @@ execute pathogen#infect()
 "
 Helptags
 
+"autocmd FileType html setlocal shiftwidth=2 tabstop=2
+"autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 
 set nocompatible
 filetype plugin indent on
@@ -42,12 +44,12 @@ syntax on
 
 set colorcolumn=80
 "set relativenumber
-set autoindent
+"set autoindent
 set ruler
-set cmdheight=2
+set cmdheight=1
 set pastetoggle=<F11>
 
-"set mouse=a
+set mouse=a
 
 "Open a file in new tab by default in NERDTree?
 
@@ -121,4 +123,4 @@ set ru "ru         noru
 "endif
 "
 
-
+set tabstop=4

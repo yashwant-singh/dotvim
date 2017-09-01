@@ -1,8 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/insta/.ssh'
-let g:netrw_dirhist_2='/home/insta/.vim/bundle/insta/doc'
-let g:netrw_dirhist_3='/home/insta/.vim'
-let g:netrw_dirhist_4='/usr/share/vim/vimfiles'
-let g:netrw_dirhist_5='/home'
-let g:netrw_dirhist_6='/home/insta/bin'
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/System/Library/Frameworks/JavaVM.framework/Versions/Current'
+let g:netrw_dirhist_2='/Users/plp-yashwant/Downloads/subversion-1.8.17/subversion/svn'
+let g:netrw_dirhist_3='/Volumes/HD-E2-Int/yashwant-hp-backup/home/apps/mac/postgres/postgresql-9.3.15/config'
+let g:netrw_dirhist_4='postfix'
+let g:netrw_dirhist_5='/Users/plp-yashwant/Downloads/postgresql-9.3.15/config'
+let g:netrw_dirhist_6='/private/var/lib/postgres/9.3/pg_xlog/archive_status'
+let g:netrw_dirhist_7='/private/var/lib/postgres/9.3/pg_xlog'
+let g:netrw_dirhist_8='/private/var/lib/postgres/9.3/pg_xlog/archive_status'
