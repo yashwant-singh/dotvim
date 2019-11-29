@@ -30,6 +30,8 @@ autocmd vimenter * if !argc() | NERDTree | endif
 
 map <C-n> :NERDTreeToggle<CR>
 
+map <S-Right> :tabn<CR>
+map <S-Left>  :tabp<CR>
 "=================================================================
 "Colour Configuration
 "=================================================================
@@ -120,5 +122,9 @@ set ru "ru         noru
 " autocmd Filetype java setlocal completefunc=javacomplete#CompleteParamsInfo
 "endif
 "
-
-
+set nu
+set tabstop=8
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+filetype indent on
